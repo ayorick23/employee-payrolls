@@ -1,0 +1,138 @@
+<!-- main.fxml -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.payrollsystem.ui.controllers.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem fx:id="menuLogout" mnemonicParsing="false" text="Cerrar Sesión" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuExit" mnemonicParsing="false" text="Salir" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuEmpleados" mnemonicParsing="false" text="Empleados">
+            <items>
+              <MenuItem fx:id="menuNuevoEmpleado" mnemonicParsing="false" text="Nuevo Empleado" />
+                  <MenuItem fx:id="menuListarEmpleados" mnemonicParsing="false" text="Listar Empleados" />
+                  <MenuItem fx:id="menuBuscarEmpleados" mnemonicParsing="false" text="Buscar Empleados" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuNominas" mnemonicParsing="false" text="Nóminas">
+            <items>
+              <MenuItem fx:id="menuCalcularNomina" mnemonicParsing="false" text="Calcular Nómina" />
+                  <MenuItem fx:id="menuHistorialNominas" mnemonicParsing="false" text="Historial de Nóminas" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuReportes" mnemonicParsing="false" text="Reportes">
+            <items>
+              <MenuItem fx:id="menuReporteNomina" mnemonicParsing="false" text="Reporte de Nómina" />
+                  <MenuItem fx:id="menuReporteDepartamento" mnemonicParsing="false" text="Por Departamento" />
+                  <MenuItem fx:id="menuGraficos" mnemonicParsing="false" text="Gráficos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Herramientas">
+            <items>
+              <MenuItem fx:id="menuExportar" mnemonicParsing="false" text="Exportar Datos" />
+                  <MenuItem fx:id="menuImportar" mnemonicParsing="false" text="Importar Datos" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuNotificaciones" mnemonicParsing="false" text="Notificaciones" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane fx:id="mainTabPane" prefHeight="600.0" prefWidth="800.0" 
+               tabClosingPolicy="SELECTED_TAB" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab closable="false" text="Dashboard">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox spacing="20.0" AnchorPane.bottomAnchor="20.0" 
+                              AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" 
+                              AnchorPane.topAnchor="20.0">
+                           <children>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefWidth="200.0" 
+                                          style="-fx-background-color: #E3F2FD; -fx-padding: 20; -fx-background-radius: 10;">
+                                       <children>
+                                          <Label fx:id="labelTotalEmpleados" text="0" 
+                                                style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #1976D2;" />
+                                          <Label text="Total Empleados" 
+                                                style="-fx-font-size: 14px; -fx-text-fill: #666;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefWidth="200.0" 
+                                          style="-fx-background-color: #E8F5E8; -fx-padding: 20; -fx-background-radius: 10;">
+                                       <children>
+                                          <Label fx:id="labelNominasPendientes" text="0" 
+                                                style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #388E3C;" />
+                                          <Label text="Nóminas Pendientes" 
+                                                style="-fx-font-size: 14px; -fx-text-fill: #666;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefWidth="200.0" 
+                                          style="-fx-background-color: #FFF3E0; -fx-padding: 20; -fx-background-radius: 10;">
+                                       <children>
+                                          <Label fx:id="labelCumpleanos" text="0" 
+                                                style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #F57C00;" />
+                                          <Label text="Cumpleaños Este Mes" 
+                                                style="-fx-font-size: 14px; -fx-text-fill: #666;" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="20.0" prefHeight="300.0">
+                                 <children>
+                                    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Empleados Recientes" 
+                                                style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                                          <TableView fx:id="tableEmpleadosRecientes" prefHeight="250.0">
+                                            <columns>
+                                              <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Código" />
+                                              <TableColumn fx:id="colNombre" prefWidth="150.0" text="Nombre" />
+                                                <TableColumn fx:id="colDepartamento" prefWidth="120.0" text="Departamento" />
+                                                <TableColumn fx:id="colFechaIngreso" prefWidth="100.0" text="Fecha Ingreso" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="10.0" prefWidth="300.0">
+                                       <children>
+                                          <Label text="Notificaciones" 
+                                                style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                                          <ListView fx:id="listNotificaciones" prefHeight="250.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Label fx:id="labelUsuario" text="Usuario: " />
+            <Separator orientation="VERTICAL" />
+            <Label fx:id="labelFecha" text="Fecha: " />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="labelStatus" text="Conectado" />
+        </items>
+      </ToolBar>
+   </bottom>
+</BorderPane>
